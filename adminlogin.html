@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Carpooling</title>
+
+	<script type="text/javascript">
+  var baseurl = "http://www.carpoolingscript.com/demo/";
+</script>
+	<!-- bootstrap -->
+
+         
+          <script src="http://www.carpoolingscript.com/demo/assets/js/jquery.js"></script>
+          <link type="text/css" href="http://www.carpoolingscript.com/demo/assets/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+        
+
+	
+	<!-- RTL support - for demo only -->
+
+   
+     <script src="http://www.carpoolingscript.com/demo/assets/js/demo-rtl.js"></script>
+     	
+	<!-- 
+	If you need RTL support just include here RTL CSS file <link rel="stylesheet" type="text/css" href="http://www.carpoolingscript.com/demo/assets/css/libs/bootstrap-rtl.min.css" />
+	And add "rtl" class to <body> element - e.g. <body class="rtl"> 
+	-->
+
+	<!-- libraries -->
+     
+	 <link type="text/css" href="http://www.carpoolingscript.com/demo/assets/css/libs/font-awesome.css" rel="stylesheet" />
+	 <link type="text/css" href="http://www.carpoolingscript.com/demo/assets/css/libs/nanoscroller.css" rel="stylesheet" />
+  
+
+	<!-- global styles -->
+
+
+	<link type="text/css" href="http://www.carpoolingscript.com/demo/assets/css/compiled/theme_styles.css" rel="stylesheet" />
+	<!-- this page specific styles -->
+ 
+    <link type="text/css" href="http://www.carpoolingscript.com/demo/assets/css/libs/datepicker.css" rel="stylesheet" />
+    <link type="text/css" href="http://www.carpoolingscript.com/demo/assets/css/libs/daterangepicker.css" rel="stylesheet" />
+    <link type="text/css" href="http://www.carpoolingscript.com/demo/assets/css/libs/bootstrap-timepicker.css" rel="stylesheet" />
+    <link type="text/css" href="http://www.carpoolingscript.com/demo/assets/css/libs/select2.css" rel="stylesheet" />
+ 
+
+	
+	<!-- Favicon -->
+	<link type="image/x-icon" href="favicon.png" rel="shortcut icon"/>
+
+	<!-- google font libraries -->
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400' rel='stylesheet' type='text/css'>
+
+	<!--[if lt IE 9]>
+		<script src="http://www.carpoolingscript.com/demo/assets/js/html5shiv.js"></script>
+		<script src="http://www.carpoolingscript.com/demo/assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body id="login-page"><style type="text/css">
+/*forget password*/
+ .forget {  text-align:center; }
+</style>
+
+    <div class="container">
+        <div class="row">
+        	<div class="main-box-body clearfix">
+                            
+                                            </div>
+            <div class="col-xs-12">
+                <div id="login-box">
+                    <div id="login-box-holder">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <header id="login-header">
+                                    <div id="login-logo">
+                                        <img src="http://www.carpoolingscript.com/demo/uploads/logo/thumbnails/user1_logo_1453733967.png" style="width:131px; height:30px;" alt=""/>
+                                    </div>
+                                </header>
+                                <div id="login-box-inner">
+                                    <form id="login-form" >
+                                      <div  id="spnError">
+												
+											
+											</div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            <input type="text" name="email" value="" class="form-control" placeholder="Email address"  />                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                            <input type="password" name="password" value="" class="form-control" placeholder="Password"  />                                        </div>
+                                        <div id="remember-me-wrapper">
+                                            <div class="row">
+                                                <div class="col-xs-6">
+                                                    <div class="checkbox-nice">
+                                                    <input type="checkbox" name="remember" value="true" id="remember-me" class="icheck-me"  />                                                        <label for="remember-me">
+                                                            Keep me logged in                                                        </label>
+                                                    </div>
+                                                                                                    
+                                            </div>
+                                            <!-- <div class="col-xs-12">
+                                            
+                                                    <p class="forget"> <a href="http://www.carpoolingscript.com/demo/admin/login/forget_password">Forgot password??</a> </p> 
+                                                </div> -->
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <button type="submit" class="btn btn-success col-xs-12">Login</button>
+                                                <input type="hidden" value="" name="redirect"/>
+												<input type="hidden" value="submitted" name="submitted"/>			
+                                            </div>
+                                        </div>                                       
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="http://www.carpoolingscript.com/demo/assets/js/jquery.validate.js"></script>
+<script type="text/javascript" src="http://www.carpoolingscript.com/demo/assets/js/jquery.validate-rules.js"></script>
+    
+    <script type='text/javascript'>
+    /* attach a submit handler to the form */
+    $("#login-form").submit(function(event) 
+	
+	{
+		
+	
+		
+      /* stop form from submitting normally */
+      event.preventDefault();
+
+      if($("#login-form").valid())
+	  {
+	   $('#spnError').html('Checking...');
+	 $.ajax({
+					type: "POST",	
+					url: baseurl + "admin/login/ajax_login/true",	
+					dataType: "json",	
+					data:$('#login-form').serialize(),
+					success: function(json)	{
+				
+						if (json.result == 0){
+							
+							$('#spnError').html('Invalid Login!');
+							$('#spnError').addClass('alert alert-danger')
+							
+						
+							//$('#spnError').show();
+							return false;
+						} else if (json.result == 1) {
+							$('#spnError').addClass('alert alert-success')
+							
+							$('#spnError').html('Success...Transferring');
+							window.location	= baseurl + json.redirect;
+						}
+					}
+				});
+	  }
+	 
+    });
+</script>
+</body>
+</html>
