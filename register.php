@@ -31,7 +31,7 @@ header("Location:login.php");
  	//$time->format('Y-m-d H:i:s');   
  	//$now->getTimestamp();  
 									   
-// 	$pass_hash = password_hash($password, PASSWORD_DEFAULT);
+ 	$pass_hash = password_hash($password, PASSWORD_DEFAULT);
 	
 // 	try{								   
 //     $query = $connection->prepare("INSERT INTO users (fname, lname, email, mobileno, password) 
